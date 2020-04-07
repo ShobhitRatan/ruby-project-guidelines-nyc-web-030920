@@ -10,11 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_07_213150) do
+ActiveRecord::Schema.define(version: 2020_04_07_213612) do
 
   create_table "competitions", force: :cascade do |t|
     t.string "name"
     t.string "plan"
+  end
+
+  create_table "seasons", force: :cascade do |t|
+    t.datetime "start_date"
+    t.datetime "end_date"
   end
 
 end
