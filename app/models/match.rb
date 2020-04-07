@@ -1,0 +1,3 @@
+class Match < ActiveRecord 
+
+end 
