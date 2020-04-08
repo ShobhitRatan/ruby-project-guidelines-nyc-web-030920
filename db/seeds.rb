@@ -12,9 +12,5 @@ competitions = GetRequester.new('http://api.football-data.org/v2/competitions/')
 competitions.get_response_body
 c1 = Competition.new 
 c1.name 
-teams = GetRequester.new('http://api.football-data.org/v2/competitions/2000/teams')
-teams.get_response_body 
-teams.parse_json 
-
   
 
