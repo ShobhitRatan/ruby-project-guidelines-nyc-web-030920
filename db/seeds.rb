@@ -10,5 +10,5 @@ competitions.parse_json.each do |plan|
     Competition.create(plan, plan.data) 
 end 
  
-c1 = Competition.create(name: "name", plan: "plan")   
+c1 = competitions    
 
