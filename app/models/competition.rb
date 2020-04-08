@@ -9,4 +9,9 @@ class Competition < ActiveRecord::Base
             Competition.create(name, name.data) 
         end  
     end 
+    def self.plan 
+        competitions.parse_json.each do |plan| 
+            Competition.create(plan, plan.data) 
+        end 
+    end 
 end 
