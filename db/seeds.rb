@@ -10,13 +10,12 @@ Team.destroy_all
 
 competitions = GetRequester.new('http://api.football-data.org/v2/competitions/') 
 competitions.get_response_body
-competitions.parse_json
-
+competitions.parse_json.each do |name| 
+    Competition.create(name, name.data) 
+end  
 teams = GetRequester.new('http://api.football-data.org/v2/competitions/2000/teams')
 teams.get_response_body 
 teams.parse_json 
 
-
-c1 = Competition.new 
-c1 = competitions.parse_json.first   
+  
 
