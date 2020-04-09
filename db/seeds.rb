@@ -123,5 +123,3 @@ t89 = Team.create(name: "Sevilla", short_name: "SFC", last_updated: DateTime.now
 t90 = Team.create(name: "Valencia", short_name: "VCF", last_updated: DateTime.now, venue: "Mestalla") 
 t91 = Team.create(name: "Valladolid", short_name: "Valladolid", last_updated: DateTime.now, venue: "José Zorrilla") 
 t92 = Team.create(name: "Villarreal", short_name: "Villarreal", last_updated: DateTime.now, venue: "Estadio de la Cerámica") 
-t93 = Team.create(name: "", short_name: "", last_updated: DateTime.now, venue: "") 
-t94 = Team.create(name: "", short_name: "", last_updated: DateTime.now, venue: "") 
