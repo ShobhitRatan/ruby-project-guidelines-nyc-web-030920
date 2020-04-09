@@ -1,6 +1,7 @@
 
 Competition.destroy_all 
 Team.destroy_all 
+Season.destroy_all 
 # Competition seed data 
 c1 = Competition.create(name: "World Cup", plan: "TIER ONE", country: "World") 
 c2 = Competition.create(name: "Premier League", plan: "TIER ONE", country: "England")
@@ -123,3 +124,9 @@ t89 = Team.create(name: "Sevilla", short_name: "SFC", last_updated: DateTime.now
 t90 = Team.create(name: "Valencia", short_name: "VCF", last_updated: DateTime.now, venue: "Mestalla") 
 t91 = Team.create(name: "Valladolid", short_name: "Valladolid", last_updated: DateTime.now, venue: "José Zorrilla") 
 t92 = Team.create(name: "Villarreal", short_name: "Villarreal", last_updated: DateTime.now, venue: "Estadio de la Cerámica") 
+# Season seed data 
+s1 = Season.create(start_date: Date.parse("06-14-2018"), end_date: Date.parse("07-15-2018"), name: "FIFA World Cup 2018") 
+s2 = Season.create(start_date: Date.parse("06-12-2014"), end_date: Date.parse("07-13-2018"), name: "FIFA World Cup 2014") 
+s3 = Season.create(start_date: Date.parse("08-08-2019"), end_date: Date.today, name: "2019-2020 Premier League") 
+s4 = Season.create(start_date: Date.parse("08-10-2018"), end_date: Date.parse("05-12-2019"), name: "2018-2019 Premier League") 
+
