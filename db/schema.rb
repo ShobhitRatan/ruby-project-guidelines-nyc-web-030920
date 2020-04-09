@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_09_163948) do
+ActiveRecord::Schema.define(version: 2020_04_09_164729) do
 
   create_table "competitions", force: :cascade do |t|
     t.string "name"
@@ -65,7 +65,6 @@ ActiveRecord::Schema.define(version: 2020_04_09_163948) do
   create_table "teams", force: :cascade do |t|
     t.string "name"
     t.string "short_name"
-    t.string "tla"
     t.string "address"
     t.string "phone"
     t.string "website"
