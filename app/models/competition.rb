@@ -8,4 +8,8 @@ class Competition < ActiveRecord::Base
     def self.add_competition(name, plan, country)
         Competition.create(name: name, plan: plan, country: country) 
     end 
+    # Method to remove a competition. 
+    def self.remove_competition(name, plan, country) 
+        Competition.remove(name: name, plan: plan, country: country) 
+    end 
 end 
