@@ -5,7 +5,7 @@ class Competition < ActiveRecord::Base
     has_many :matches, through: :current_seasons 
     
     # Method to add a new competition. 
-    def add_competition(name, plan, country)
+    def self.add_competition(name, plan, country)
         Competition.create(name: name, plan: plan, country: country) 
     end 
 end 
