@@ -9,7 +9,7 @@ class Competition < ActiveRecord::Base
         Competition.create(name: name, plan: plan, country: country) 
     end 
     # Method to remove a competition. 
-    def remove_competition
-        Competition.where("name = ? && plan = ? && country = ?").destroy 
+    def self.remove_competition
+        Competition.find(name: ?).destroy 
     end 
 end 
