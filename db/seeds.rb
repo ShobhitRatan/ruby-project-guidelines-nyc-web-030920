@@ -50,6 +50,5 @@ t16 = Team.create(name: "Morocco", short_name: "MAR", last_updated: DateTime.now
 t17 = Team.create(name: "Columbia", short_name: "COL", last_updated: DateTime.now, venue: "Craven Cottage")
 t18 = Team.create(name: "Egypt", short_name: "EGY", last_updated: DateTime.now, venue: "Stadio Atleti Azzurri d'Italia")
 t19 = Team.create(name: "Peru", short_name: "PER", last_updated: DateTime.now, venue: "Estadio Nacional") 
-t20 = Team.create(name: "Peru", short_name: "PER", last_updated: DateTime.now, venue: "Estadio Nacional") 
-
-
+t20 = Team.create(name: "Iran", short_name: "IRN", last_updated: DateTime.now, venue: "Azadi Stadium")
+t21 = Team.create(name: "Iran", short_name: "IRN", last_updated: DateTime.now, venue: "Azadi Stadium")
