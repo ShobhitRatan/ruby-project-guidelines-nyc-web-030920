@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_09_201833) do
+ActiveRecord::Schema.define(version: 2020_04_09_211353) do
 
   create_table "competitions", force: :cascade do |t|
     t.string "name"
@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 2020_04_09_201833) do
     t.datetime "start_date"
     t.datetime "end_date"
     t.boolean "active_season?"
+    t.string "name"
   end
 
   create_table "teams", force: :cascade do |t|
