@@ -40,3 +40,16 @@ t6 = Team.create(name: "Korea Republic", short_name: "KOR", last_updated: DateTi
 t7 = Team.create(name: "Nigeria", short_name: "NIG", last_updated: DateTime.now, venue: "Rudolf-Tonn-Stadion") 
 t8 = Team.create(name: "Australia", short_name: "AUS", last_updated: DateTime.now, venue: "NV Arena") 
 t9 = Team.create(name: "Serbia", short_name: "SER", last_updated: DateTime.now, venue: "Merkur Arena")   
+t10 = Team.create(name: "Costa Rica", short_name: "CRI", last_updated: DateTime.now, venue: "Estadio Nacional de Costa Rica")
+t11 = Team.create(name: "Poland", short_name: "POL", last_updated: DateTime.now, venue: "Stadion Śląski")
+t12 = Team.create(name: "Croatia", short_name: "HRV", last_updated: DateTime.now, venue: "Stadion Maksimir") 
+t13 = Team.create(name: "Saudi Arabia", short_name: "KSA", last_updated: DateTime.now, venue: "Kybunpark")
+t14 = Team.create(name: "Tunisia", short_name: "TUN", last_updated: DateTime.now, venue: "Stade Olympique de Radès") 
+t15 = Team.create(name: "Senegal", short_name: "SEN", last_updated: DateTime.now, venue: "Stade Océane")
+t16 = Team.create(name: "Morocco", short_name: "MAR", last_updated: DateTime.now, venue: "Stade de Genève")
+t17 = Team.create(name: "Columbia", short_name: "COL", last_updated: DateTime.now, venue: "Craven Cottage")
+t18 = Team.create(name: "Egypt", short_name: "EGY", last_updated: DateTime.now, venue: "Stadio Atleti Azzurri d'Italia")
+t19 = Team.create(name: "Peru", short_name: "PER", last_updated: DateTime.now, venue: "Estadio Nacional") 
+t20 = Team.create(name: "Peru", short_name: "PER", last_updated: DateTime.now, venue: "Estadio Nacional") 
+
+
