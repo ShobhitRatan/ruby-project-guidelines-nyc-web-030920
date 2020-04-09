@@ -1,6 +1,7 @@
 
 Competition.destroy_all 
-
+Team.destroy_all 
+# Competition seed data
 c1 = Competition.create(name: "Premier League", plan: "TIER ONE", country: "England") 
 c2 = Competition.create(name: "World Cup", plan: "TIER ONE", country: "World") 
 c3 = Competition.create(name: "UEFA Champions League", plan: "TIER ONE", country: "Europe") 
@@ -29,3 +30,6 @@ c25 = Competition.create(name: "I- League", plan: "TIER FOUR", country: "India")
 c26 = Competition.create(name: "Serie C", plan: "TIER FOUR", country: "Italy")
 c27 = Competition.create(name: "National League", plan: "TIER FOUR", country: "England") 
 c28 = Competition.create(name: "ABSA Premiership", plan: "TIER FOUR", country: "South Africa")       
+# Team seed data 
+t1 = Team.create(name: "Argentina", short_name: "ARG", address: "Viamonte 1366/76 Buenos Aires 1053", phone: "+54 (11) 43719400",
+    website: "http://www.afa.org.ar", email: "gerencia@afa.org.ar", )
