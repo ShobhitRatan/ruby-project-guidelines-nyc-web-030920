@@ -131,3 +131,5 @@ s3 = Season.create(start_date: Date.parse("08-08-2019"), end_date: Date.today, n
 s4 = Season.create(start_date: Date.parse("08-10-2018"), end_date: Date.parse("05-12-2019"), name: "2018-2019 Premier League") 
 s5 = Season.create(start_date: Date.parse("08-24-2019"), end_date: Date.today, name: "2019-2020 Serie A")
 s6 = Season.create(start_date: Date.parse("08-18-2018"), end_date: Date.parse("05-26-2019"), name: "2018-2019 Serie A") 
+s7 = Season.create(start_date: Date.parse("08-24-2019"), end_date: Date.today, name: "2019-2020 La Liga")
+s8 = Season.create(start_date: Date.parse("08-17-2018"), end_date: Date.parse("05-19-2019"), name: "2018-2019 La Liga") 
