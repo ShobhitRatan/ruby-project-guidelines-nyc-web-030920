@@ -2,6 +2,8 @@
 Competition.destroy_all 
 Team.destroy_all 
 Season.destroy_all 
+Match.destroy_all 
+CurrentSeason.destroy_all 
 # Competition seed data 
 c1 = Competition.create(name: "World Cup", plan: "TIER ONE", country: "World") 
 c2 = Competition.create(name: "Premier League", plan: "TIER ONE", country: "England")
@@ -133,3 +135,22 @@ s5 = Season.create(start_date: Date.parse("08-24-2019"), end_date: Date.today, n
 s6 = Season.create(start_date: Date.parse("08-18-2018"), end_date: Date.parse("05-26-2019"), name: "2018-2019 Serie A") 
 s7 = Season.create(start_date: Date.parse("08-24-2019"), end_date: Date.today, name: "2019-2020 La Liga")
 s8 = Season.create(start_date: Date.parse("08-17-2018"), end_date: Date.parse("05-19-2019"), name: "2018-2019 La Liga") 
+# Match seed data 
+m1 = Match.create(stage: "Group Stage", group: "Group A") 
+m2 = Match.create(stage: "Group Stage", group: "Group B")
+m3 = Match.create(stage: "Group Stage", group: "Group C")
+m4 = Match.create(stage: "Group Stage", group: "Group D")
+m5 = Match.create(stage: "Group Stage", group: "Group E")
+m6 = Match.create(stage: "Group Stage", group: "Group F")
+m7 = Match.create(stage: "Group Stage", group: "Group G") 
+m8 = Match.create(stage: "Group Stage", group: "Group H") 
+m9 = Match.create(stage: "Group Stage", group: "Group Stage") 
+m10 = Match.create(stage: "Knockout", group: "Round of 16") 
+m11 = Match.create(stage: "Knockout", group: "Quarter-Finals") 
+m12 = Match.create(stage: "Knockout", group: "Semi-Finals") 
+m13 = Match.create(stage: "Knockout", group: "3rd Place Playoffs") 
+m14 = Match.create(stage: "Knockout", group: "Finals")  
+# CurrentSeason seed data 
+cs1 = CurrentSeason.create(competition_id: c1, season_id: s1, team_id: t2, match_id: m1) 
+cs2 = CurrentSeason.create(competition_id: c1, season_id: s1, team_id: t13, match_id: m1) 
+cs3 = CurrentSeason.create(competition_id: c1, season_id: s1, team_id: t13, match_id: m1)
