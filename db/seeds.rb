@@ -154,3 +154,8 @@ m14 = Match.create(stage: "Knockout", group: "Finals")
 cs1 = CurrentSeason.create(competition_id: c1, season_id: s1, team_id: t2, match_id: m1) 
 cs2 = CurrentSeason.create(competition_id: c1, season_id: s1, team_id: t13, match_id: m1) 
 cs3 = CurrentSeason.create(competition_id: c1, season_id: s1, team_id: t13, match_id: m1)
+cs4 = CurrentSeason.create(competition_id: c1, season_id: s1, team_id: t18, match_id: m1) 
+cs5 = CurrentSeason.create(competition_id: c1, season_id: s1, team_id: t28, match_id: m1) 
+cs6 = CurrentSeason.create(competition_id: c1, season_id: s1, team_id: t16, match_id: m2) 
+
+
