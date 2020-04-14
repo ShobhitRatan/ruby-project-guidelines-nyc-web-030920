@@ -215,5 +215,6 @@ cs61 = CurrentSeason.create(competition_id: c1, season_id: s1, team_id: t22, mat
 cs62 = CurrentSeason.create(competition_id: c1, season_id: s1, team_id: t24, match_id: m13) 
 cs63 = CurrentSeason.create(competition_id: c1, season_id: s1, team_id: t12, match_id: m14) 
 cs64 = CurrentSeason.create(competition_id: c1, season_id: s1, team_id: t25, match_id: m14) 
-# 
+# Player seed data 
+
 
