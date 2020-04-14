@@ -1,4 +1,4 @@
-
+require 'date'
 Competition.destroy_all 
 Team.destroy_all 
 Season.destroy_all 
@@ -127,14 +127,14 @@ t90 = Team.create(name: "Valencia", short_name: "VCF", last_updated: DateTime.no
 t91 = Team.create(name: "Valladolid", short_name: "Valladolid", last_updated: DateTime.now, venue: "José Zorrilla") 
 t92 = Team.create(name: "Villarreal", short_name: "Villarreal", last_updated: DateTime.now, venue: "Estadio de la Cerámica") 
 # Season seed data 
-s1 = Season.create(start_date: Date.parse("06-14-2018"), end_date: Date.parse("07-15-2018"), name: "FIFA World Cup 2018") 
-s2 = Season.create(start_date: Date.parse("06-12-2014"), end_date: Date.parse("07-13-2018"), name: "FIFA World Cup 2014") 
-s3 = Season.create(start_date: Date.parse("08-08-2019"), end_date: Date.today, name: "2019-2020 Premier League") 
-s4 = Season.create(start_date: Date.parse("08-10-2018"), end_date: Date.parse("05-12-2019"), name: "2018-2019 Premier League") 
-s5 = Season.create(start_date: Date.parse("08-24-2019"), end_date: Date.today, name: "2019-2020 Serie A")
-s6 = Season.create(start_date: Date.parse("08-18-2018"), end_date: Date.parse("05-26-2019"), name: "2018-2019 Serie A") 
-s7 = Season.create(start_date: Date.parse("08-24-2019"), end_date: Date.today, name: "2019-2020 La Liga")
-s8 = Season.create(start_date: Date.parse("08-17-2018"), end_date: Date.parse("05-19-2019"), name: "2018-2019 La Liga") 
+s1 = Season.create(start_date: Date.new(2018,6,14), end_date: Date.new(2018,7,15), name: "FIFA World Cup 2018") 
+s2 = Season.create(start_date: Date.new(2014,6,12), end_date: Date.new(2014,7,13), name: "FIFA World Cup 2014") 
+s3 = Season.create(start_date: Date.new(2019,8,8), end_date: Date.today, name: "2019-2020 Premier League") 
+s4 = Season.create(start_date: Date.new(2018,8,10), end_date: Date.new(2019,5,12), name: "2018-2019 Premier League") 
+s5 = Season.create(start_date: Date.new(2019,8,24), end_date: Date.today, name: "2019-2020 Serie A")
+s6 = Season.create(start_date: Date.new(2018,8,18), end_date: Date.new(2019,5,26), name: "2018-2019 Serie A") 
+s7 = Season.create(start_date: Date.new(2019,8,24), end_date: Date.today, name: "2019-2020 La Liga")
+s8 = Season.create(start_date: Date.new(2018,8,17), end_date: Date.new(2019,5,19), name: "2018-2019 La Liga") 
 # Match seed data 
 m1 = Match.create(stage: "Group Stage", group: "Group A") 
 m2 = Match.create(stage: "Group Stage", group: "Group B")
@@ -153,9 +153,21 @@ m14 = Match.create(stage: "Knockout", group: "Finals")
 # CurrentSeason seed data 
 cs1 = CurrentSeason.create(competition_id: c1, season_id: s1, team_id: t2, match_id: m1) 
 cs2 = CurrentSeason.create(competition_id: c1, season_id: s1, team_id: t13, match_id: m1) 
-cs3 = CurrentSeason.create(competition_id: c1, season_id: s1, team_id: t13, match_id: m1)
-cs4 = CurrentSeason.create(competition_id: c1, season_id: s1, team_id: t18, match_id: m1) 
-cs5 = CurrentSeason.create(competition_id: c1, season_id: s1, team_id: t28, match_id: m1) 
-cs6 = CurrentSeason.create(competition_id: c1, season_id: s1, team_id: t16, match_id: m2) 
-
+cs3 = CurrentSeason.create(competition_id: c1, season_id: s1, team_id: t18, match_id: m1) 
+cs4 = CurrentSeason.create(competition_id: c1, season_id: s1, team_id: t28, match_id: m1) 
+cs5 = CurrentSeason.create(competition_id: c1, season_id: s1, team_id: t16, match_id: m2) 
+cs6 = CurrentSeason.create(competition_id: c1, season_id: s1, team_id: t20, match_id: m2) 
+cs7 = CurrentSeason.create(competition_id: c1, season_id: s1, team_id: t27, match_id: m2)   
+cs8 = CurrentSeason.create(competition_id: c1, season_id: s1, team_id: t29, match_id: m2) 
+cs9 = CurrentSeason.create(competition_id: c1, season_id: s1, team_id: t8, match_id: m3) 
+cs10 = CurrentSeason.create(competition_id: c1, season_id: s1, team_id: t19, match_id: m3) 
+cs11 = CurrentSeason.create(competition_id: c1, season_id: s1, team_id: t23, match_id: m3) 
+cs12 = CurrentSeason.create(competition_id: c1, season_id: s1, team_id: t25, match_id: m3) 
+cs13 = CurrentSeason.create(competition_id: c1, season_id: s1, team_id: t1, match_id: m4) 
+cs14 = CurrentSeason.create(competition_id: c1, season_id: s1, team_id: t7, match_id: m4) 
+cs15 = CurrentSeason.create(competition_id: c1, season_id: s1, team_id: t12, match_id: m4) 
+cs16 = CurrentSeason.create(competition_id: c1, season_id: s1, team_id: t32, match_id: m4) 
+cs17 = CurrentSeason.create(competition_id: c1, season_id: s1, team_id: t3, match_id: m5) 
+cs18 = CurrentSeason.create(competition_id: c1, season_id: s1, team_id: t9, match_id: m5) 
+ 
 
