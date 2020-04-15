@@ -27,5 +27,5 @@ class Competition < ActiveRecord::Base
     end 
     def self.tier_four_competitions 
         Competition.where("plan = TIER_FOUR").all 
-    end 
+    end  
 end 

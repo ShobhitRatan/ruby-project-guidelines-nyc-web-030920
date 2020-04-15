@@ -22,6 +22,6 @@ class CommandLineInterface
         elsif choice == 4 
             Competition.tier_four_competitions 
         end  
-        
+
     end 
 end  
