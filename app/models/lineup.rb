@@ -10,4 +10,11 @@ class Lineup < ActiveRecord::Base
     def self.oldest_player 
         self.where("age = ?", self.maximum_age).first 
     end 
+    def self.minimum_age 
+        age = Date.today - date_of_birth.year 
+        self.minimum(:age) 
+    end 
+    def self.youngest_player 
+        self.where("age = ?", self.minimum_age).first 
+    end 
 end 
