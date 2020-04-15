@@ -46,7 +46,7 @@ class CommandLineInterface
             Competition.la_liga_seasons 
         elsif competition_choice == 6 
             Competition.serie_a_brazil_seasons 
-        elsif choice == 7 
+        elsif competition_choice == 7 
             Competition.bundesliga_seasons 
         end 
         puts "Please select the season you would like to see: " 
