@@ -34,6 +34,21 @@ class CommandLineInterface
         puts "Please select the competition you would like to see the teams, players and matches for: " 
         competition_options 
         competition_choice = gets.chomp() 
+        if competition_choice == 1 
+            Competition.world_cup_seasons 
+        elsif competition_choice == 2 
+            Competition.premier_league_seasons 
+        elsif competition_choice == 3 
+            Competition.uefa_champions_league_seasons 
+        elsif competition_choice == 4 
+            Competition.serie_a_italy_seasons 
+        elsif competition_choice == 5 
+            Competition.la_liga_seasons 
+        elsif competition_choice == 6 
+            Competition.serie_a_brazil_seasons 
+        elsif choice == 7 
+            Competition.bundesliga_seasons 
+        end 
         puts "Please select the season you would like to see: " 
         season_name = gets.chomp()  
     end 
