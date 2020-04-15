@@ -31,4 +31,25 @@ class Competition < ActiveRecord::Base
     def self.world_cup_seasons
         Competition.seasons.where("name = World Cup").all 
     end 
+    def self.premier_league_seasons 
+        Competition.seasons.where("name = Premier League").all 
+    end 
+    def self.premier_league_seasons 
+        Competition.seasons.where("name = Premier League").all 
+    end 
+    def self.uefa_champions_league_seasons 
+        Competition.seasons.where("name = UEFA Champions League").all 
+    end 
+    def self.serie_a_italy_seasons 
+        Competition.seasons.where("name = Serie A Italy").all 
+    end 
+    def self.la_liga_seasons 
+        Competition.seasons.where("name = La Liga").all 
+    end 
+    def self.serie_a_brazil_seasons 
+        Competition.seasons.where("name = Serie A Brazil").all 
+    end 
+    def self.bundesliga_seasons 
+        Competition.seasons.where("name = Bundesliga").all 
+    end 
 end 

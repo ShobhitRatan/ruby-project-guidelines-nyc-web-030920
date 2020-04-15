@@ -12,9 +12,9 @@ class CommandLineInterface
         puts "1- World Cup" 
         puts "2- Premier League" 
         puts "3- UEFA Champions League" 
-        puts "4- Serie A" 
+        puts "4- Serie A Italy" 
         puts "5- La Liga" 
-        puts "6- Serie A" 
+        puts "6- Serie A Brazil" 
         puts "7- Bundesliga" 
     end 
     def run 
@@ -33,7 +33,7 @@ class CommandLineInterface
         end  
         puts "Please select the competition you would like to see the teams, players and matches for: " 
         competition_options 
-        competition_name = gets.chomp() 
+        competition_choice = gets.chomp() 
         puts "Please select the season you would like to see: " 
         season_name = gets.chomp()  
     end 
