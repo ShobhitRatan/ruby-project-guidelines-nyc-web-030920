@@ -17,6 +17,10 @@ class CommandLineInterface
         puts "6- Serie A Brazil" 
         puts "7- Bundesliga" 
     end 
+    def season_options 
+        puts "1- FIFA World Cup 2018" 
+        puts "2- FIFA World Cup 2014" 
+    end 
     def run 
         greet 
         puts "Let's pick a competition from one of the four options: " 
@@ -50,6 +54,12 @@ class CommandLineInterface
             Competition.bundesliga_seasons 
         end 
         puts "Please select the season you would like to see: " 
-        season_name = gets.chomp()  
+        season_options 
+        season_choice = gets.chomp() 
+        if season_choice == 1 
+            CurrentSeason.fifa_world_cup_2018 
+        elsif season_choice == 2 
+            CurrentSeason.fifa_world_cup_2018 
+        end  
     end 
 end  
