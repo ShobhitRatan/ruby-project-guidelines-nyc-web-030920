@@ -6,7 +6,8 @@ class CommandLineInterface
         puts "1- TIER ONE" 
         puts "2- TIER TWO" 
         puts "3- TIER THREE" 
-        puts "4- TIER FOUR" 
+        puts "4- TIER FOUR"  
+
     end 
     def run 
         greet 
@@ -14,13 +15,13 @@ class CommandLineInterface
         options 
         choice = gets.chomp()  
         if choice == 1
-            Competition.where("plan = TIER ONE") 
+            Competition.where("plan = TIER_ONE").all 
         elsif choice == 2
-            Competition.where("plan = TIER TWO") 
+            Competition.where("plan = TIER TWO").all
         elsif choice == 3 
-            Competition.where("plan = TIER THREE") 
+            Competition.where("plan = TIER THREE").all 
         elsif choice == 4 
-            Competition.where("plan = TIER FOUR") 
+            Competition.where("plan = TIER FOUR").all 
         end 
         Competition.find_by(plan: choice) 
     end 
