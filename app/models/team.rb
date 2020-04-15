@@ -9,5 +9,8 @@ class Team < ActiveRecord::Base
     def self.add_team(name, short_name, last_updated, venue) 
         Team.create(name: name, short_name: short_name, last_updated: last_updated, venue: venue) 
     end 
+    def teams 
+        self.all 
+    end 
     
 end 
