@@ -40,7 +40,8 @@ class CommandLineInterface
         puts "1- Iran" 
         puts "2- Morocco" 
         puts "3- Portugal" 
-        puts "4- Spain"  
+        puts "4- Spain" 
+    end  
     def run 
         greet 
         puts "Let's pick a competition from one of the four options: " 
