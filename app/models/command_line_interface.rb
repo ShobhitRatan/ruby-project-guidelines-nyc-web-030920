@@ -22,6 +22,7 @@ class CommandLineInterface
         elsif choice == 4 
             Competition.tier_four_competitions 
         end  
-
+        puts "Please select the competition you would like to see the teams, players and matches for: " 
+        competition_name = gets.chomp() 
     end 
 end  
