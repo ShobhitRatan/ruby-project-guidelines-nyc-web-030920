@@ -12,5 +12,8 @@ class Team < ActiveRecord::Base
     def teams 
         self.all 
     end 
-    
+    def self.remove_team(name) 
+        Competition.find_by(name: name) 
+        Competition.destroy(name) 
+    end 
 end 

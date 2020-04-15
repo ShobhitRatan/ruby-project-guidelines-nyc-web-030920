@@ -25,6 +25,6 @@ class CommandLineInterface
         puts "Please select the competition you would like to see the teams, players and matches for: " 
         competition_name = gets.chomp() 
         puts "Please select the season you would like to see: " 
-        season_name = gets.chomp() 
+        season_name = gets.chomp()  
     end 
 end  
