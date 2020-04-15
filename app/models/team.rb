@@ -16,4 +16,9 @@ class Team < ActiveRecord::Base
         Competition.find_by(name: name) 
         Competition.destroy(name) 
     end 
+    def self.update_team(old_name, new_name) 
+        team_name = Competition.find_by(old_name) 
+        team_name.update(name: new_name) 
+    end 
+    
 end 
