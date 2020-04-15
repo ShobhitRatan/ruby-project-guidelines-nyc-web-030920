@@ -29,4 +29,15 @@ class Lineup < ActiveRecord::Base
     def self.spain_squad 
         self.players.where("name = Spain").all 
     end  
+    def self.add_player_to_squad(player_id, team_id) 
+        Lineup.create(player_id: player_id, team_id: team_id) 
+    end 
+    def self.remove_player_from_squad(player_id) 
+        Lineup.find_by(player_id: player_id) 
+        Lineup.destroy(player_id) 
+    end 
+    def self.update_player 
+        Player.score 
+        Player.play 
+    end   
 end 

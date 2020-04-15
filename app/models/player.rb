@@ -2,6 +2,9 @@ require 'date'
 class Player < ActiveRecord::Base 
     has_many :lineups 
     has_many :teams, through: :lineups 
+    def self.add_player(name, position, goals, caps, date_of_birth, club) 
+        Player.create(name: name, position: position, goals: goals, caps: caps, date_of_birth: date_of_birth, club: club) 
+    end 
     def self.highest_number_of_goals 
         self.maximum(:goals) 
     end 
@@ -20,5 +23,11 @@ class Player < ActiveRecord::Base
     end 
     def self.oldest_player 
         self.where("age = ?", self.maximum_age).first 
+    end 
+    def score 
+        self.goals += 1 
+    end 
+    def play 
+        self.caps += 1 
     end 
 end 

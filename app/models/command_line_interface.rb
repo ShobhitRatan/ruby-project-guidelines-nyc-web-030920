@@ -44,6 +44,31 @@ class CommandLineInterface
         puts "3- Portugal" 
         puts "4- Spain" 
     end  
+    def lineup_options 
+        puts "1- Rui Patricio" 
+        puts "2- Bruno Alves" 
+        puts "3- Pepe" 
+        puts "4- Manuel Fernandes" 
+        puts "5- Raphael Guerreiro" 
+        puts "6- Jose Fonte" 
+        puts "7- Christiano Ronaldo" 
+        puts "8- Joao Moutinho" 
+        puts "9- Andre Silva" 
+        puts "10- Joao Mario" 
+        puts "11- Bernardo Silva" 
+        puts "12- Anthony Lopes" 
+        puts "13- Ruben Dias" 
+        puts "14- William Carvalho" 
+        puts "15- Ricardo Pereira" 
+        puts "16- Bruno Fernandes" 
+        puts "17- Goncalo Guedes" 
+        puts "18- Gelson Martins" 
+        puts "19- Mario Rui" 
+        puts "20- Ricardo Quaresma" 
+        puts "21- Cedric" 
+        puts "22- Beto" 
+        puts "23- Adrien Silva" 
+    end 
     def run 
         greet 
         puts "Let's pick a competition from one of the four options: " 
@@ -126,5 +151,8 @@ class CommandLineInterface
         elsif team_choice == 4 
             Lineup.spain_squad 
         end 
+         
+        puts "Please select the player whose stats you want to see: " 
+
     end 
 end  
