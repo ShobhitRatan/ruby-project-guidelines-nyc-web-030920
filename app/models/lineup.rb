@@ -17,4 +17,16 @@ class Lineup < ActiveRecord::Base
     def self.youngest_player 
         self.where("age = ?", self.minimum_age).first 
     end 
+    def self.iran_squad 
+        self.players.where("name = Iran").all 
+    end 
+    def self.morocco_squad 
+        self.players.where("name = Morocco").all 
+    end 
+    def self.portugal_squad 
+        self.players.where("name = Portugal").all 
+    end 
+    def self.spain_squad 
+        self.players.where("name = Spain").all 
+    end  
 end 

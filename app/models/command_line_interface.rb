@@ -112,6 +112,16 @@ class CommandLineInterface
             Match.finalists 
         end 
         puts "Please select the teams you would like to see: " 
-
+        team_options 
+        team_choice = gets.chomp() 
+        if team_choice == 1 
+            Lineup.iran_squad 
+        elsif team_choice == 2 
+            Lineup.morocco_squad 
+        elsif team_choice == 3 
+            Lineup.portugal_squad 
+        elsif team_choice == 4 
+            Lineup.spain_squad 
+        end 
     end 
 end  
