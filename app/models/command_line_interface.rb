@@ -35,7 +35,12 @@ class CommandLineInterface
         puts "11- Semi-Finals" 
         puts "12- 3rd Place Playoff" 
         puts "13- Final" 
-    end 
+    end
+    def team_options 
+        puts "1- Iran" 
+        puts "2- Morocco" 
+        puts "3- Portugal" 
+        puts "4- Spain"  
     def run 
         greet 
         puts "Let's pick a competition from one of the four options: " 
@@ -78,6 +83,35 @@ class CommandLineInterface
         end 
         puts "Please select the group you would like to see: " 
         group_options 
-        group_choice = gets.chomp()  
+        group_choice = gets.chomp()   
+        if group_choice == 1 
+            Match.group_a_teams 
+        elsif group_choice == 2 
+            Match.group_b_teams 
+        elsif group_choice == 3
+            Match.group_c_teams 
+        elsif group_choice == 4 
+            Match.group_d_teams 
+        elsif group_choice == 5 
+            Match.group_e_teams 
+        elsif group_choice == 6 
+            Match.group_f_teams 
+        elsif group_choice == 7 
+            Match.group_g_teams 
+        elsif group_choice == 8 
+            Match.group_h_teams 
+        elsif group_choice == 9 
+            Match.round_of_16_teams 
+        elsif group_choice == 10 
+            Match.quarter_finalists 
+        elsif group_choice == 11 
+            Match.semi_finalists 
+        elsif group_choice == 12 
+            Match.third_place_playoffs 
+        elsif group_choice == 13 
+            Match.finalists 
+        end 
+        puts "Please select the teams you would like to see: " 
+
     end 
 end  
