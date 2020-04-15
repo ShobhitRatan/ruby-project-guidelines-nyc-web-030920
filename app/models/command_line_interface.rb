@@ -14,14 +14,14 @@ class CommandLineInterface
         plan_options 
         choice = gets.chomp()  
         if choice == 1
-            Competition.where("plan = TIER_ONE").all 
+            Competition.tier_one_competitions
         elsif choice == 2
-            Competition.where("plan = TIER TWO").all
+            Competition.tier_two_competitions
         elsif choice == 3 
-            Competition.where("plan = TIER THREE").all 
+            Competition.tier_three_competitions 
         elsif choice == 4 
-            Competition.where("plan = TIER FOUR").all 
-        end 
-        Competition.find_by(plan: choice) 
+            Competition.tier_four_competitions 
+        end  
+        
     end 
 end  
