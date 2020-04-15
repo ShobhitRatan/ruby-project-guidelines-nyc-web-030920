@@ -21,6 +21,21 @@ class CommandLineInterface
         puts "1- FIFA World Cup 2018" 
         puts "2- FIFA World Cup 2014" 
     end 
+    def group_options 
+        puts "1- Group A" 
+        puts "2- Group B" 
+        puts "3- Group C" 
+        puts "4- Group D" 
+        puts "5- Group E" 
+        puts "6- Group F" 
+        puts "7- Group G" 
+        puts "8- Group H" 
+        puts "9- Round of 16" 
+        puts "10- Quarter-Finals" 
+        puts "11- Semi-Finals" 
+        puts "12- 3rd Place Playoff" 
+        puts "13- Final" 
+    end 
     def run 
         greet 
         puts "Let's pick a competition from one of the four options: " 
@@ -60,6 +75,9 @@ class CommandLineInterface
             CurrentSeason.fifa_world_cup_2018 
         elsif season_choice == 2 
             CurrentSeason.fifa_world_cup_2018 
-        end  
+        end 
+        puts "Please select the group you would like to see: " 
+        group_options 
+        group_choice = gets.chomp()  
     end 
 end  
