@@ -28,4 +28,7 @@ class Competition < ActiveRecord::Base
     def self.tier_four_competitions 
         Competition.where("plan = TIER_FOUR").all 
     end  
+    def self.world_cup_seasons
+        Competition.seasons.where("name = World Cup").all 
+    end 
 end 
