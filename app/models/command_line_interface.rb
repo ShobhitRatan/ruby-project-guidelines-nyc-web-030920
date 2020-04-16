@@ -1,6 +1,7 @@
 require_all 'app' 
 require 'date' 
-class CommandLineInterface 
+require_all 'config' 
+class CommandLineInterface
     def greet 
         puts "Welcome to Soccer Data Exchange! The go to place for soccer fans from around the world." 
     end 
@@ -247,7 +248,7 @@ class CommandLineInterface
         Player.add_player("Shobhit Ratan", "MF", 10, 20, Date.new(1995,9,22), "Real Madrid") 
         Lineup.add_player_to_squad(185,27)  
         Lineup.update_player(185)  
-        Lineup.remove_player_from_squad(161) 
+        Lineup.remove_player_from_squad(161)   
         Player.most_goals  
         Player.most_matches   
         updated_lineup 
