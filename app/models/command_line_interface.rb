@@ -1,5 +1,4 @@
-require_all 'app' 
-require_all 'db'  
+require_all 'app'  
 require 'date' 
 class CommandLineInterface 
     def greet 
@@ -18,17 +17,17 @@ class CommandLineInterface
         self.maximum(:caps) 
     end 
     def Player.most_matches 
-        self.where("player = ?", self.highest_number_of_matches_played).first 
+        self.where("caps = ?", self.highest_number_of_matches_played).first 
     end 
     def Player.maximum_age 
-        age = Date.today.year - date_of_birth.year 
+        age = Date.today.year - Player.date_of_birth.year 
         self.maximum(:age) 
     end 
     def Player.oldest_player 
         self.where("age = ?", self.maximum_age).first 
     end
     def Player.minimum_age 
-        age = Date.today - date_of_birth.year 
+        age = Date.today - Player.date_of_birth.year 
         self.minimum(:age) 
     end 
     def Player.youngest_player 
@@ -244,7 +243,8 @@ class CommandLineInterface
         Lineup.add_player_to_squad(185,27)  
         Lineup.update_player(185)  
         Lineup.remove_player_from_squad(161) 
-        Player.most_goals     
+        Player.most_goals  
+        Player.most_matches   
         updated_lineup 
     end 
 end  
