@@ -1,8 +1,68 @@
 require_all 'app' 
-require_all 'db' 
+require_all 'db'  
+require 'date' 
 class CommandLineInterface 
     def greet 
         puts "Welcome to Soccer Data Exchange! The go to place for soccer fans from around the world." 
+    end 
+    def Player.add_player(name, position, goals, caps, date_of_birth, club) 
+        Player.create(name: name, position: position, goals: goals, caps: caps, date_of_birth: date_of_birth, club: club) 
+    end 
+    def Player.highest_number_of_goals 
+        self.maximum(:goals) 
+    end 
+    def Player.most_goals 
+        self.where("goals = ?", self.highest_number_of_goals).first 
+    end 
+    def Player.highest_number_of_matches_played 
+        self.maximum(:caps) 
+    end 
+    def Player.most_matches 
+        self.where("player = ?", self.highest_number_of_matches_played).first 
+    end 
+    def Player.maximum_age 
+        age = Date.today.year - date_of_birth.year 
+        self.maximum(:age) 
+    end 
+    def Player.oldest_player 
+        self.where("age = ?", self.maximum_age).first 
+    end
+    def Player.minimum_age 
+        age = Date.today - date_of_birth.year 
+        self.minimum(:age) 
+    end 
+    def Player.youngest_player 
+        self.where("age = ?", self.minimum_age).first 
+    end  
+    def score 
+        self.goals += 1 
+    end 
+    def play 
+        self.caps += 1 
+    end 
+    def Lineup.iran_squad 
+        self.players.where("name = Iran").all 
+    end 
+    def Lineup.morocco_squad 
+        self.players.where("name = Morocco").all 
+    end 
+    def Lineup.portugal_squad 
+        self.players.where("name = Portugal").all 
+    end 
+    def Lineup.spain_squad 
+        self.players.where("name = Spain").all 
+    end  
+    def Lineup.add_player_to_squad(player_id, team_id) 
+        Lineup.create(player_id: player_id, team_id: team_id) 
+    end 
+    def Lineup.remove_player_from_squad(name)  
+        Player.find_by(name: name)
+        Lineup.destroy(name)   
+    end 
+    def Lineup.update_player(player_id)  
+        player_id = Player.find_by(name: "Shobhit Ratan")
+        player_id.update(caps: 30) 
+        player_id.update(goals: 15)  
     end 
     def plan_options 
         puts "1- TIER ONE" 
@@ -69,6 +129,31 @@ class CommandLineInterface
         puts "22- Beto" 
         puts "23- Adrien Silva" 
     end 
+    def updated_lineup 
+        puts "1- Rui Patricio" 
+        puts "2- Bruno Alves" 
+        puts "3- Pepe" 
+        puts "4- Manuel Fernandes" 
+        puts "5- Raphael Guerreiro" 
+        puts "6- Jose Fonte" 
+        puts "7- Christiano Ronaldo" 
+        puts "8- Joao Moutinho" 
+        puts "9- Andre Silva" 
+        puts "10- Joao Mario" 
+        puts "11- Bernardo Silva" 
+        puts "12- Anthony Lopes" 
+        puts "13- Ruben Dias" 
+        puts "14- William Carvalho" 
+        puts "15- Ricardo Pereira" 
+        puts "16- Bruno Fernandes" 
+        puts "17- Goncalo Guedes" 
+        puts "18- Gelson Martins" 
+        puts "19- Mario Rui" 
+        puts "20- Ricardo Quaresma" 
+        puts "21- Cedric" 
+        puts "22- Beto"  
+        puts "23- Shobhit Ratan"
+    end 
     def run 
         greet 
         puts "Let's pick a competition from one of the four options: " 
@@ -81,7 +166,7 @@ class CommandLineInterface
         elsif plan_choice == 3 
             Competition.tier_three_competitions 
         elsif plan_choice == 4 
-            Competition.tier_four_competitions 
+            Competition.tier_four_competitions 1
         end  
         puts "Please select the competition you would like to see the teams, players and matches for: " 
         competition_options 
@@ -149,10 +234,18 @@ class CommandLineInterface
         elsif team_choice == 3 
             Lineup.portugal_squad 
         elsif team_choice == 4 
-            Lineup.spain_squad 
+            Lineup.spain_squad  
         end 
-         
-        puts "Please select the player whose stats you want to see: " 
 
+        
+        puts "Please see the lineup for the team below:  " 
+        lineup_options 
+        Player.add_player("Shobhit Ratan", "MF", 10, 20, Date.new(1995,9,22), "Real Madrid") 
+        Lineup.add_player_to_squad(185,27)  
+        Lineup.update_player(185)  
+        Lineup.remove_player_from_squad(161) 
+        Player.most_goals 
+        puts Player.most_goals     
+        updated_lineup 
     end 
 end  
