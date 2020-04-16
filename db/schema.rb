@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_15_045953) do
+ActiveRecord::Schema.define(version: 2020_04_16_002340) do
 
   create_table "competitions", force: :cascade do |t|
     t.string "name"
@@ -38,8 +38,6 @@ ActiveRecord::Schema.define(version: 2020_04_15_045953) do
     t.string "status"
     t.integer "attendance"
     t.string "venue"
-    t.string "stage"
-    t.string "group"
     t.datetime "last_updated"
   end
 
