@@ -244,8 +244,7 @@ class CommandLineInterface
         Lineup.add_player_to_squad(185,27)  
         Lineup.update_player(185)  
         Lineup.remove_player_from_squad(161) 
-        Player.most_goals 
-        puts Player.most_goals     
+        Player.most_goals     
         updated_lineup 
     end 
 end  
