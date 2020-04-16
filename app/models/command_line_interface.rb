@@ -1,6 +1,5 @@
 require_all 'app' 
-require 'date' 
-require_all 'config' 
+require 'date'  
 class CommandLineInterface
     def greet 
         puts "Welcome to Soccer Data Exchange! The go to place for soccer fans from around the world." 
@@ -55,7 +54,7 @@ class CommandLineInterface
     def Lineup.add_player_to_squad(player_id, team_id) 
         Lineup.create(player_id: player_id, team_id: team_id) 
     end 
-    def Lineup.remove_player_from_squad(name)  
+    def Lineup.remove_player_from_squad(player_id, team_id)   
         Player.find_by(name: name)
         Lineup.destroy(name)   
     end 
@@ -163,7 +162,7 @@ class CommandLineInterface
         greet 
         puts "Let's pick a competition from one of the four options: " 
         plan_options 
-        plan_choice = gets.chomp()  
+        plan_choice = gets.strip  
         if plan_choice == 1
             Competition.tier_one_competitions
         elsif plan_choice == 2
@@ -175,7 +174,7 @@ class CommandLineInterface
         end  
         puts "Please select the competition you would like to see the teams, players and matches for: " 
         competition_options 
-        competition_choice = gets.chomp()  
+        competition_choice = gets.strip  
         if competition_choice == 1 
             Competition.world_cup_seasons 
         elsif competition_choice == 2 
@@ -193,7 +192,7 @@ class CommandLineInterface
         end 
         puts "Please select the season you would like to see: " 
         season_options 
-        season_choice = gets.chomp() 
+        season_choice = gets.strip  
         if season_choice == 1 
             CurrentSeason.fifa_world_cup_2018 
         elsif season_choice == 2 
@@ -201,7 +200,7 @@ class CommandLineInterface
         end 
         puts "Please select the group you would like to see: " 
         group_options 
-        group_choice = gets.chomp()   
+        group_choice = gets.strip   
         if group_choice == 1 
             Match.group_a_teams 
         elsif group_choice == 2 
@@ -231,7 +230,7 @@ class CommandLineInterface
         end 
         puts "Please select the teams you would like to see: " 
         team_options 
-        team_choice = gets.chomp() 
+        team_choice = gets.strip 
         if team_choice == 1 
             Lineup.iran_squad 
         elsif team_choice == 2 
@@ -245,10 +244,13 @@ class CommandLineInterface
         
         puts "Please see the lineup for the team below:  " 
         lineup_options 
+        player_options 
+        player_choice = gets.strip 
+        player_choice = Player.find_by(name: name)
         Player.add_player("Shobhit Ratan", "MF", 10, 20, Date.new(1995,9,22), "Real Madrid") 
         Lineup.add_player_to_squad(185,27)  
         Lineup.update_player(185)  
-        Lineup.remove_player_from_squad(161)   
+        Lineup.remove_player_from_squad(161,27)       
         Player.most_goals  
         Player.most_matches   
         updated_lineup 

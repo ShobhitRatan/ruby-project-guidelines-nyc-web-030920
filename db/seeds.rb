@@ -1,4 +1,4 @@
-require 'date'
+require 'date' 
 Competition.destroy_all 
 Team.destroy_all 
 Season.destroy_all 
