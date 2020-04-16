@@ -1,4 +1,5 @@
-require_all 'app'   
+require_all 'app' 
+require_all 'db'  
 require 'date' 
 class CommandLineInterface 
     def greet 
