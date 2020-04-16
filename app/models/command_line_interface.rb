@@ -170,7 +170,7 @@ class CommandLineInterface
         end  
         puts "Please select the competition you would like to see the teams, players and matches for: " 
         competition_options 
-        competition_choice = gets.chomp() 
+        competition_choice = gets.chomp()  
         if competition_choice == 1 
             Competition.world_cup_seasons 
         elsif competition_choice == 2 
