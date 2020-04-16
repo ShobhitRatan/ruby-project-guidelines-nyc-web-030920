@@ -18,24 +18,36 @@ main_menu = ["Competition Plan", "Competition", "Season", "Group", "Team", "Line
                 if plan_choice == plan_menu[0] 
                     tier_one_competitions = CompetitionPlan.find_by(name: "TIER ONE").competitions.map do |t| 
                         t.name 
-                    end   
-                    puts "#{tier_one_competitions}" 
+                    end  
+                puts tier_one_competitions 
                 elsif plan_choice == plan_menu[1] 
                     tier_two_competitions = CompetitionPlan.find_by(name: "TIER TWO").competitions.map do |t| 
                         t.name 
                     end   
-                    puts "#{tier_two_competitions}"  
+                puts tier_two_competitions
                 elsif plan_choice == plan_menu[2] 
                     tier_three_competitions = CompetitionPlan.find_by(name: "TIER THREE").competitions.map do |t| 
                         t.name 
                     end   
-                    puts "#{tier_three_competitions}"
+                puts tier_three_competitions
                 elsif plan_choice == plan_menu[3] 
-                    tier_four_competitions = CompetitionPlan.find_by(name: "TIER TWO").competitions.map do |t| 
+                    tier_four_competitions = CompetitionPlan.find_by(name: "TIER FOUR").competitions.map do |t| 
                         t.name 
                     end   
-                    puts "#{tier_four_competitions}"
+                puts tier_four_competitions
                 end 
+            end 
+            user_plan_menu = ["Add a new competition", "Update an existing competition", "Remove an existing competition", "Exit"] 
+            user_plan_choice = nil 
+            while user_plan_choice != user_plan_menu[3] 
+                user_plan_choice = prompt.select("Please select another option: ", user_plan_menu) 
+                if user_plan_choice == user_plan_menu[0] 
+                    name = prompt.ask("What would you like to name the competition") 
+                    country = prompt.ask("Which country would you like the competition to be from? ") 
+                    competition_plan_id = prompt.ask("Which tier will the competition be in? ")
+                    new_competition = Competition.create(name: name, country: country, competition_plan_id: competition_plan_id)   
+                end 
+                plan_choice = prompt.select("Please select another option: ", plan_menu)    
             end 
         end 
     end 
