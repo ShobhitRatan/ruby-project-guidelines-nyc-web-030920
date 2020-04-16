@@ -8,48 +8,48 @@ class CommandLineInterface
         Player.create(name: name, position: position, goals: goals, caps: caps, date_of_birth: date_of_birth, club: club) 
     end 
     def Player.highest_number_of_goals 
-        self.maximum(:goals) 
+        Player.maximum(:goals) 
     end 
     def Player.most_goals 
-        self.where("goals = ?", self.highest_number_of_goals).first 
+        Player.where("goals = ?", self.highest_number_of_goals).first 
     end 
     def Player.highest_number_of_matches_played 
-        self.maximum(:caps) 
+        Player.maximum(:caps) 
     end 
     def Player.most_matches 
-        self.where("caps = ?", self.highest_number_of_matches_played).first 
+        Player.where("caps = ?", self.highest_number_of_matches_played).first 
     end 
     def Player.maximum_age 
         age = Date.today.year - Player.date_of_birth.year 
-        self.maximum(:age) 
+        Player.maximum(:age) 
     end 
     def Player.oldest_player 
-        self.where("age = ?", self.maximum_age).first 
+        Player.where("age = ?", self.maximum_age).first 
     end
     def Player.minimum_age 
         age = Date.today - Player.date_of_birth.year 
-        self.minimum(:age) 
+        Player.minimum(:age) 
     end 
     def Player.youngest_player 
-        self.where("age = ?", self.minimum_age).first 
+        Player.where("age = ?", self.minimum_age).first 
     end  
     def score 
-        self.goals += 1 
+        Player.goals += 1 
     end 
     def play 
-        self.caps += 1 
+        Player.caps += 1 
     end 
     def Lineup.iran_squad 
-        self.players.where("name = Iran").all 
+        Lineup.players.where("name = Iran").all 
     end 
     def Lineup.morocco_squad 
-        self.players.where("name = Morocco").all 
+        Lineup.players.where("name = Morocco").all 
     end 
     def Lineup.portugal_squad 
-        self.players.where("name = Portugal").all 
+        Lineup.players.where("name = Portugal").all 
     end 
     def Lineup.spain_squad 
-        self.players.where("name = Spain").all 
+        Lineup.players.where("name = Spain").all 
     end  
     def Lineup.add_player_to_squad(player_id, team_id) 
         Lineup.create(player_id: player_id, team_id: team_id) 

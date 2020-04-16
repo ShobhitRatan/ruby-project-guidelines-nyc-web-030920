@@ -10,12 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_16_003134) do
+ActiveRecord::Schema.define(version: 2020_04_16_190857) do
+
+  create_table "competition_plans", force: :cascade do |t|
+    t.string "name"
+  end
 
   create_table "competitions", force: :cascade do |t|
     t.string "name"
-    t.string "plan"
     t.string "country"
+    t.integer "competition_plan_id"
   end
 
   create_table "current_seasons", force: :cascade do |t|
