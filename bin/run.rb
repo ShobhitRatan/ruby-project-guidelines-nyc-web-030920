@@ -67,7 +67,7 @@ while main_choice != main_menu[7]
         end 
         competition_menu << "Exit"
         competition_choice = nil 
-        while competition_choice != competition_menu[7]   
+        while competition_choice != "Exit"   
             competition_choice = prompt.select("Please select another option", competition_menu)  
             if competition_choice == competition_menu[0] 
                 world_cup_seasons = Competition.find_by(name: "World Cup").seasons.map do |t| 
@@ -105,6 +105,16 @@ while main_choice != main_menu[7]
                 end 
             puts bundesliga_seasons    
             end 
+        end 
+    elsif main_choice == main_menu[2] 
+        season_prompt = prompt.ask("Which season will the group be in?  ")   
+        season_menu = Competition.find_by(name: season_prompt).seasons.map do |t| 
+            t.name 
+        end 
+        season_menu << "Exit"
+        season_choice = nil 
+        while season_choice != "Exit" 
+            season_choice = prompt.select("Please select another option", season_menu)  
         end 
     end 
 end 
