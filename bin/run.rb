@@ -1,6 +1,7 @@
 require_relative '../config/environment'
 require "tty-prompt" 
 require_all 'db/migrate' 
+require 'date' 
 prompt = TTY::Prompt.new 
 def greet 
     puts "Welcome to Soccer Data Exchange! The go to place for soccer fans from around the world."    
@@ -67,7 +68,7 @@ while main_choice != main_menu[7]
         end 
         competition_menu << "Exit"
         competition_choice = nil 
-        while competition_choice != "Exit"   
+        while competition_choice != competition_menu[7]   
             competition_choice = prompt.select("Please select another option", competition_menu)  
             if competition_choice == competition_menu[0] 
                 world_cup_seasons = Competition.find_by(name: "World Cup").seasons.map.uniq do |t| 
@@ -107,7 +108,7 @@ while main_choice != main_menu[7]
             end 
             user_season_menu = ["Add a new season", "Update an existing season", "Exit"] 
             user_season_choice = nil  
-            while user_season_choice != "Exit" 
+            while user_season_choice != user_season_menu[2]
                 user_season_choice = prompt.select("Please select another option: ", user_season_menu)  
                 if user_season_choice == user_season_menu[0] 
                     start_date = prompt.ask("What is the starting date for the season? ") 
@@ -130,7 +131,7 @@ while main_choice != main_menu[7]
         end 
         season_menu << "Exit"
         season_choice = nil 
-        while season_choice != "Exit" 
+        while season_choice != season_menu[2]  
             season_choice = prompt.select("Please select another option", season_menu)  
             if season_choice == season_menu[0] 
                 fifa_world_cup_2018 = Season.find_by(name: "FIFA World Cup 2018").matches.map do |t| 
@@ -144,12 +145,12 @@ while main_choice != main_menu[7]
         end 
     elsif main_choice == main_menu[3] 
         group_prompt = prompt.ask("Please enter the season you are interested in? ") 
-        group_menu = Season.find_by(group: group_prompt).matches.map do |t| 
-            t.group 
+        group_menu = ["Group A", "Group B", "Group C", "Group D", "Group E", "Group F", "Group G", "Group H", "Round of 16", "Quarter-Finals", "Semi-Finals", "3rd Place Playoff", "Final"].map do |string| 
+            string 
         end 
         group_menu << "Exit" 
         group_choice = nil 
-        while group_choice != "Exit" 
+        while group_choice != group_menu[13]  
             group_choice = prompt.select("Please select another option", group_menu) 
             if group_choice == group_menu[0] 
                 group_a_teams = Match.find_by(group: "Group A").teams.map do |t| 
@@ -217,19 +218,29 @@ while main_choice != main_menu[7]
                 end 
                 puts finals_teams 
             end 
-            user_team_options = ["Add a new team", "Update an existing team", "Remove an existing team", "Exit"] 
+            user_team_menu = ["Add a new team", "Update an existing team", "Remove an existing team", "Exit"] 
             user_team_choice = nil 
             while user_team_choice != "Exit" 
                 user_team_choice = prompt.select("Please select another option: ", user_team_menu) 
-                if user_team_choice == user_team_options[0] 
+                if user_team_choice == user_team_menu[0] 
                     name = prompt.ask("What would you like to name your team? ") 
                     short_name = prompt.ask("What will be the short name for the team? ") 
-                    last_updated = Datetime.now 
+                    last_updated = Date.today
                     venue = prompt.ask("What will be the main venue for the team? ") 
                     new_team = Team.create(name: name, short_name: short_name, last_updated: last_updated, venue: venue) 
+                elsif user_team_choice == user_team_menu[1] 
+                    name_prompt = prompt.ask("Which team would you like to update? ") 
+                    old_name = name_prompt 
+                    new_name = prompt.ask("What would you like to name it? ") 
+                    team_name = Team.find_by(name: old_name) 
+                    team_name.update(name: new_name)  
+                elsif  user_team_choice == user_team_menu[2] 
+                    name_remove = prompt.ask("Which team would you like to remove? ")  
+                    Team.destroy_by(name: name_remove) 
                 end  
             end  
         end 
+    end 
 end 
 # cli = CommandLineInterface.new 
 # cli.run  
