@@ -134,13 +134,13 @@ while main_choice != main_menu[7]
         while season_choice != season_menu[2]  
             season_choice = prompt.select("Please select another option", season_menu)  
             if season_choice == season_menu[0] 
-                fifa_world_cup_2018 = Season.find_by(name: "FIFA World Cup 2018").matches.map do |t| 
-                    t.group 
-                end.uniq  
+                fifa_world_cup_2018 = ["Group A", "Group B", "Group C", "Group D", "Group E", "Group F", "Group G", "Group H", "Round of 16", "Quarter-Finals", "Semi-Finals", "3rd Place Playoff", "Final"].map do |string| 
+                    string 
+                end 
             elsif season_choice == season_menu[1] 
-                fifa_world_cup_2014 = Season.find_by(name: "FIFA World Cup 2014").matches.map do |t| 
-                    t.group 
-                end.uniq   
+                fifa_world_cup_2014 = ["Group A", "Group B", "Group C", "Group D", "Group E", "Group F", "Group G", "Group H", "Round of 16", "Quarter-Finals", "Semi-Finals", "3rd Place Playoff", "Final"].map do |string| 
+                    string 
+                end 
             end 
         end 
     elsif main_choice == main_menu[3] 
