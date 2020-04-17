@@ -44,20 +44,20 @@ while main_choice != main_menu[7]
             while user_plan_choice != user_plan_menu[3] 
                 user_plan_choice = prompt.select("Please select another option: ", user_plan_menu) 
                 if user_plan_choice == user_plan_menu[0] 
-                    name = prompt.ask("What would you like to name the competition? ") 
+                    competition_name = prompt.ask("What would you like to name the competition? ") 
                     country = prompt.ask("Which country would you like the competition to be from? ") 
                     competition_prompt = prompt.ask("Which tier will the competition be in? ") 
-                    competition_plan_id = CompetitionPlan.find_by(name: competition_prompt) 
-                    new_competition = Competition.create(name: name, country: country, competition_plan_id: competition_plan_id)   
+                    competition_plan_id = competition_prompt  
+                    new_competition = Competition.create(name: competition_name, country: country, competition_plan_id: competition_plan_id)   
                 elsif user_plan_choice == user_plan_menu[1] 
-                    name_prompt = prompt.ask("Which competition would you like to update? ") 
-                    old_name = name_prompt 
-                    new_name = prompt.ask("What would you like to name it? ") 
-                    competition_name = Competition.find_by(name: old_name) 
-                    competition_name.update(name: new_name) 
+                    competition_name_prompt = prompt.ask("Which competition would you like to update? ") 
+                    old_competition_name = competition_name_prompt 
+                    new_competition_name = prompt.ask("What would you like to name it? ") 
+                    competition_name = Competition.find_by(name: old_competition_name) 
+                    competition_name.update(name: new_competition_name) 
                 elsif user_plan_choice == user_plan_menu[2] 
-                    name_remove = prompt.ask("Which competition would you like to remove? ")  
-                    Competition.destroy_by(name: name_remove)   
+                    competition_name_remove = prompt.ask("Which competition would you like to remove? ")  
+                    Competition.destroy_by(name: competition_name_remove)   
                 end 
                 plan_choice = prompt.select("Please select another option: ", plan_menu)    
             end 
@@ -71,29 +71,29 @@ while main_choice != main_menu[7]
         while competition_choice != competition_menu[7]   
             competition_choice = prompt.select("Please select another option", competition_menu)  
             if competition_choice == competition_menu[0] 
-                world_cup_seasons = Competition.find_by(name: "World Cup").seasons.map do |t| 
-                    t.name 
-                end.uniq 
-                puts world_cup_seasons 
-            elsif competition_choice == competition_menu[1] 
-                premier_league_seasons = ["FIFA World Cup 2018", "FIFA World Cup 2014"].map do |string| 
+                world_cup_seasons = ["FIFA World Cup 2018", "FIFA World Cup 2014"].map do |string| 
                     string 
                 end 
+                puts world_cup_seasons 
+            elsif competition_choice == competition_menu[1] 
+                premier_league_seasons = Competition.find_by(name: "Premier League").seasons.map do |t| 
+                    t.name 
+                end.uniq
             puts premier_league_seasons 
             elsif competition_choice == competition_menu[2] 
-                uefa_champions_league_seasons = Competition.find_by(name: "UEFA Champions League").seasons.map.uniq do |t| 
+                uefa_champions_league_seasons = Competition.find_by(name: "UEFA Champions League").seasons.map do |t| 
                     t.name 
-                end 
+                end.uniq 
             puts uefa_champions_league_seasons 
             elsif competition_choice == competition_menu[3] 
-                serie_a_italy_seasons = Competition.find_by(name: "Serie A Italy").seasons.map.uniq do |t| 
+                serie_a_italy_seasons = Competition.find_by(name: "Serie A Italy").seasons.map do |t| 
                     t.name 
-                end 
+                end.uniq  
             puts serie_a_italy_seasons   
             elsif competition_choice == competition_menu[4] 
-                la_liga_seasons = Competition.find_by(name: "La Liga").seasons.map.uniq do |t| 
+                la_liga_seasons = Competition.find_by(name: "La Liga").seasons.map do |t| 
                     t.name 
-                end 
+                end.uniq 
             puts la_liga_seasons 
             elsif competition_choice == competition_menu[5] 
                 serie_a_brazil_seasons = Competition.find_by(name: "Serie A Brazil").seasons.map do |t| 
@@ -113,14 +113,18 @@ while main_choice != main_menu[7]
                 if user_season_choice == user_season_menu[0] 
                     start_date = prompt.ask("What is the starting date for the season? ") 
                     end_date = prompt.ask("What is the ending date for the season? ") 
-                    name = prompt.ask("What is the season's name? ") 
-                    new_season = Season.create(start_date: start_date, end_date: end_date, name: name) 
+                    season_add_name = prompt.ask("What is the season's name? ") 
+                    new_season = Season.create(start_date: start_date, end_date: end_date, name: season_add_name) 
+                    updated_add_seasons = CurrentSeason.create(competition_id: 3, season_id: 9, team_id: 76, match_id: 9) 
+                    puts updated_add_seasons 
                 elsif user_season_choice == user_season_menu[1] 
-                    name_prompt = prompt.ask("Which season would you like to update? ") 
-                    old_name = name_prompt 
-                    new_name = prompt.ask("What would you like to name it? ") 
-                    season_name = Season.find_by(name: old_name) 
-                    season_name.update(name: new_name) 
+                    season_name_prompt = prompt.ask("Which season would you like to update? ") 
+                    old_season_name = season_name_prompt 
+                    new_season_name = prompt.ask("What would you like to name it? ") 
+                    season_name = Season.find_by(name: old_season_name) 
+                    season_name.update(name: new_season_name) 
+                    updated_updated_seasons = CurrentSeason.create(competition_id: 2, season_id: 3, team_id: 1, match_id: 1) 
+                    puts updated_updated_seasons 
                 end 
             end 
         end 
@@ -137,10 +141,12 @@ while main_choice != main_menu[7]
                 fifa_world_cup_2018 = ["Group A", "Group B", "Group C", "Group D", "Group E", "Group F", "Group G", "Group H", "Round of 16", "Quarter-Finals", "Semi-Finals", "3rd Place Playoff", "Final"].map do |string| 
                     string 
                 end 
+                puts fifa_world_cup_2018
             elsif season_choice == season_menu[1] 
                 fifa_world_cup_2014 = ["Group A", "Group B", "Group C", "Group D", "Group E", "Group F", "Group G", "Group H", "Round of 16", "Quarter-Finals", "Semi-Finals", "3rd Place Playoff", "Final"].map do |string| 
                     string 
                 end 
+                puts fifa_world_cup_2014 
             end 
         end 
     elsif main_choice == main_menu[3] 
