@@ -239,6 +239,21 @@ while main_choice != main_menu[7]
                     Team.destroy_by(name: name_remove) 
                 end  
             end  
+        end
+    elsif main_choice == main_menu[4] 
+        team_prompt = "Please enter a group to see the teams: " 
+        team_menu = Match.find_by(group: team_prompt).teams.map do |t| 
+            t.name 
+        end 
+        team_menu << "Exit"
+        team_choice = nil 
+        while team_choice != team_menu[4] 
+            team_choice = prompt.select("Please select another option", team_menu) 
+            if team_choice == team_menu[0] 
+                team_1_lineup = Team.find_by(name: Iran).players.map do |t| 
+                    t.name 
+                end 
+            end 
         end 
     end 
 end 
