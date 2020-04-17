@@ -8,7 +8,7 @@ def greet
 end 
 greet 
 prompt.ask("What is your name?", default: ENV['USER']) 
-main_menu = ["Competition Plan", "Competition", "Season", "Group", "Team", "Lineup", "Player", "Log Out"]  
+main_menu = ["Competition Plan", "Competition", "Season", "Group", "Team", "Player", "Lineup", "Log Out"]  
 main_choice = nil 
 while main_choice != main_menu[7] 
     main_choice = prompt.select("This is the main menu.", main_menu) 
@@ -106,16 +106,17 @@ while main_choice != main_menu[7]
                 end.uniq 
             puts bundesliga_seasons   
             end 
-            user_season_menu = ["Add a new season", "Update an existing season", "Exit"] 
+            user_season_menu = ["Add a new season", "Update an existing season", "Remove an existing season", "Exit"] 
             user_season_choice = nil  
-            while user_season_choice != user_season_menu[2]
+            while user_season_choice != user_season_menu[3]
                 user_season_choice = prompt.select("Please select another option: ", user_season_menu)  
                 if user_season_choice == user_season_menu[0] 
                     start_date = prompt.ask("What is the starting date for the season? ") 
                     end_date = prompt.ask("What is the ending date for the season? ") 
                     season_add_name = prompt.ask("What is the season's name? ") 
                     new_season = Season.create(start_date: start_date, end_date: end_date, name: season_add_name) 
-                    updated_add_seasons = CurrentSeason.create(competition_id: 3, season_id: 9, team_id: 76, match_id: 9) 
+                    season_id = Season.find_by(name: season_add_name)
+                    updated_add_seasons = CurrentSeason.create(competition_id: 3, season_id: season_id, team_id: 76, match_id: 9) 
                     puts updated_add_seasons 
                 elsif user_season_choice == user_season_menu[1] 
                     season_name_prompt = prompt.ask("Which season would you like to update? ") 
@@ -123,8 +124,12 @@ while main_choice != main_menu[7]
                     new_season_name = prompt.ask("What would you like to name it? ") 
                     season_name = Season.find_by(name: old_season_name) 
                     season_name.update(name: new_season_name) 
-                    updated_updated_seasons = CurrentSeason.create(competition_id: 2, season_id: 3, team_id: 1, match_id: 1) 
+                    updated_season_id = Season.find_by(name: new_season_name) 
+                    updated_updated_seasons = CurrentSeason.create(competition_id: 1, season_id: 1, team_id: 2, match_id: 1) 
                     puts updated_updated_seasons 
+                elsif user_season_choice == user_season_menu[2] 
+                    season_remove = prompt.ask("Which season would you like to remove? ")  
+                    Season.destroy_by(name: season_remove)  
                 end 
             end 
         end 
@@ -229,20 +234,23 @@ while main_choice != main_menu[7]
             while user_team_choice != "Exit" 
                 user_team_choice = prompt.select("Please select another option: ", user_team_menu) 
                 if user_team_choice == user_team_menu[0] 
-                    name = prompt.ask("What would you like to name your team? ") 
+                    team_name = prompt.ask("What would you like to name your team? ") 
                     short_name = prompt.ask("What will be the short name for the team? ") 
                     last_updated = Date.today
                     venue = prompt.ask("What will be the main venue for the team? ") 
-                    new_team = Team.create(name: name, short_name: short_name, last_updated: last_updated, venue: venue) 
+                    group = prompt.ask("Which group would you like to add the team to")
+                    new_team = Team.create(name: team_name, short_name: short_name, last_updated: last_updated, venue: venue) 
+                    add_team_to_group = CurrentSeason.create(competition_id: 1, season_id: 1, team_id: 93, match_id: 2) 
+                    puts new_team
                 elsif user_team_choice == user_team_menu[1] 
-                    name_prompt = prompt.ask("Which team would you like to update? ") 
-                    old_name = name_prompt 
-                    new_name = prompt.ask("What would you like to name it? ") 
-                    team_name = Team.find_by(name: old_name) 
-                    team_name.update(name: new_name)  
+                    team_name_prompt = prompt.ask("Which team would you like to update? ") 
+                    old_team_name = team_name_prompt 
+                    new_team_name = prompt.ask("What would you like to name it? ") 
+                    team_name = Team.find_by(name: old_team_name) 
+                    team_name.update(name: new_team_name)  
                 elsif  user_team_choice == user_team_menu[2] 
-                    name_remove = prompt.ask("Which team would you like to remove? ")  
-                    Team.destroy_by(name: name_remove) 
+                    team_name_remove = prompt.ask("Which team would you like to remove? ")  
+                    Team.destroy_by(name: team_name_remove) 
                 end  
             end  
         end
@@ -275,6 +283,55 @@ while main_choice != main_menu[7]
                     t.name 
                 end 
                 puts team_4_lineup 
+            end 
+        end 
+    elsif  main_choice == main_menu[5] 
+        user_player_menu = ["Add a new Player", "Update an existing player", "Remove an existing player", "Exit"] 
+        user_player_choice = nil 
+        while user_player_choice != user_player_menu[3] 
+            user_player_choice = prompt.select("Please select another option", user_player_menu) 
+            if user_player_choice == user_player_menu[0] 
+                user_player_name = prompt.ask("What is your player's name? ") 
+                add_position = prompt.ask("What position does he play? ") 
+                add_goals = prompt.ask("How many goals has he scored? ") 
+                add_caps = prompt.ask("How many matches has he played? ") 
+                add_date_of_birth = prompt.ask("What's his Date of Birth? ") 
+                add_club = prompt.ask("What club does he play for? ") 
+                new_player = Player.create(name: user_player_name, position: add_position, goals: add_goals, caps: add_caps, date_of_birth: add_date_of_birth, club: add_club) 
+                puts new_player 
+            elsif user_player_choice == user_player_menu[1] 
+                user_player_prompt = prompt.ask("What player's attributes would you like to update? ") 
+                old_player = user_player_prompt 
+                new_player_goals = prompt.ask("What are the updated goals for the player? ") 
+                new_player_caps = prompt.ask("What are the updated caps for the player? ") 
+                player_stats = Player.find_by(name: old_player) 
+                player_stats.update(goals: new_player_goals) 
+                player_stats.update(caps: new_player_caps) 
+                puts player_stats  
+            elsif user_player_choice == user_player_menu[2] 
+                player_name_remove = prompt.ask("Which player is retiring from the game? ") 
+                Player.destroy_by(name: player_name_remove) 
+                puts "Wishing you a very Happy Retirement!! Hope you have a prosperous second half just as the first one." 
+            end 
+        end 
+    elsif  main_choice == main_menu[6] 
+        user_lineup_menu = ["Add a player to the lineup", "Remove Player from Lineup", "Exit"] 
+        user_lineup_choice = nil 
+        while user_lineup_choice != user_lineup_menu[2] 
+            user_lineup_choice = prompt.select("Please select another option", user_lineup_menu) 
+            if  user_lineup_choice == user_lineup_menu[0] 
+                user_lineup_team_name = prompt.ask("Which team do you want to add the player to? ")
+                user_lineup_player_name = prompt.ask("Which player would you like add to the lineup? ") 
+                team_id = Team.find_by(name: user_lineup_team_name) 
+                player_id = Player.find_by(name: user_lineup_player_name) 
+                new_lineup = Lineup.create(team_id: Team.find_by(name: user_lineup_team_name), player_id: Player.find_by(name: user_lineup_player_name))  
+                puts new_lineup 
+            elsif user_lineup_choice == user_lineup_menu[1] 
+                lineup_player_name_remove = prompt.ask("Which player is retiring from the game? ") 
+                lineup_team_name_remove = prompt.ask("Which team did he play for? ") 
+                player_id = Player.find_by(name: lineup_player_name_remove) 
+                team_id = Team.find_by(name: lineup_team_name_remove)  
+                Lineup.destroy 
             end 
         end 
     end 
