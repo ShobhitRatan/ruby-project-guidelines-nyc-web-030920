@@ -70,51 +70,74 @@ while main_choice != main_menu[7]
         while competition_choice != "Exit"   
             competition_choice = prompt.select("Please select another option", competition_menu)  
             if competition_choice == competition_menu[0] 
-                world_cup_seasons = Competition.find_by(name: "World Cup").seasons.map do |t| 
-                    t.name 
+                world_cup_seasons = ["FIFA World Cup 2018", "FIFA World Cup 2014"].map do |string| 
+                    string 
                 end 
-            puts world_cup_seasons 
+                puts world_cup_seasons 
             elsif competition_choice == competition_menu[1] 
-                premier_league_seasons = Competition.find_by(name: "Premier League").seasons.map do |t| 
-                    t.name 
-                end 
+                premier_league_seasons = ["2019-2020 Premier League", "2018-2019 Premier League"].map do |string| 
+                    string 
+                end  
             puts premier_league_seasons 
             elsif competition_choice == competition_menu[2] 
-                uefa_champions_league_seasons = Competition.find_by(name: "UEFA Champions League").seasons.map do |t| 
-                    t.name 
+                uefa_champions_league_seasons = [].map do |string| 
+                    string 
                 end 
             puts uefa_champions_league_seasons 
             elsif competition_choice == competition_menu[3] 
-                serie_a_italy_seasons = Competition.find_by(name: "Serie A Italy").seasons.map do |t| 
-                    t.name 
+                serie_a_italy_seasons = ["2019-2020 Serie A Italy", "2018-2019 Serie A Italy"].map do |string| 
+                    string 
                 end 
             puts serie_a_italy_seasons   
             elsif competition_choice == competition_menu[4] 
-                la_liga_seasons = Competition.find_by(name: "La Liga").seasons.map do |t| 
-                    t.name 
+                la_liga_seasons = ["2019-2020 La Liga", "2018-2019 La Liga"].map do |string| 
+                    string 
                 end 
             puts la_liga_seasons 
             elsif competition_choice == competition_menu[5] 
-                serie_a_brazil_seasons = Competition.find_by(name: "Serie A Brazil").seasons.map do |t| 
-                    t.name 
+                serie_a_brazil_seasons = [].map do |string| 
+                    string 
                 end 
             puts serie_a_brazil_seasons 
             elsif competition_choice == competition_menu[6] 
-                bundesliga_seasons = Competition.find_by(name: "Bundesliga").seasons.map do |t| 
-                    t.name 
+                bundesliga_seasons = [].map do |string| 
+                    string 
                 end 
             puts bundesliga_seasons    
+            end 
+            user_season_menu = ["Add a new season", "Update an existing season", "Exit"] 
+            user_season_choice = nil  
+            while user_season_choice != "Exit" 
+                user_season_choice = prompt.select("Please select another option: ", user_season_menu)  
+                if user_season_choice == user_season_menu[0] 
+                    start_date = prompt.ask("What is the starting date for the season? ") 
+                    end_date = prompt.ask("What is the ending date for the season? ") 
+                    name = prompt.ask("What is the season's name? ") 
+                    new_season = Season.create(start_date: start_date, end_date: end_date, name: name) 
+                    world_cup_seasons << new_season   
+                elsif user_season_choice == user_season_menu[1] 
+                    name_prompt = prompt.ask("Which season would you like to update? ") 
+                    old_name = name_prompt 
+                    new_name = prompt.ask("What would you like to name it? ") 
+                    season_name = Season.find_by(name: old_name) 
+                    season_name.update(name: new_name) 
+                end 
             end 
         end 
     elsif main_choice == main_menu[2] 
         season_prompt = prompt.ask("Which season will the group be in?  ")   
-        season_menu = Competition.find_by(name: season_prompt).seasons.map do |t| 
-            t.name 
+        season_menu = ["FIFA World Cup 2018", "FIFA World Cup 2014"].map do |string| 
+            string 
         end 
         season_menu << "Exit"
         season_choice = nil 
         while season_choice != "Exit" 
             season_choice = prompt.select("Please select another option", season_menu)  
+            if season_choice == season_menu[0] 
+                fifa_world_cup_2018 = Season.find_by(name: "FIFA World Cup 2018").matches.map do |t| 
+                    t.name 
+                end 
+            end 
         end 
     end 
 end 
