@@ -70,40 +70,40 @@ while main_choice != main_menu[7]
         while competition_choice != "Exit"   
             competition_choice = prompt.select("Please select another option", competition_menu)  
             if competition_choice == competition_menu[0] 
-                world_cup_seasons = ["FIFA World Cup 2018", "FIFA World Cup 2014"].map do |string| 
-                    string 
+                world_cup_seasons = Competition.find_by(name: "World Cup").seasons.map.uniq do |t| 
+                    t.name 
                 end 
                 puts world_cup_seasons 
             elsif competition_choice == competition_menu[1] 
-                premier_league_seasons = ["2019-2020 Premier League", "2018-2019 Premier League"].map do |string| 
-                    string 
-                end  
+                premier_league_seasons = Competition.find_by(name: "Premier League").seasons.map.uniq do |t| 
+                    t.name 
+                end 
             puts premier_league_seasons 
             elsif competition_choice == competition_menu[2] 
-                uefa_champions_league_seasons = [].map do |string| 
-                    string 
+                uefa_champions_league_seasons = Competition.find_by(name: "UEFA Champions League").seasons.map.uniq do |t| 
+                    t.name 
                 end 
             puts uefa_champions_league_seasons 
             elsif competition_choice == competition_menu[3] 
-                serie_a_italy_seasons = ["2019-2020 Serie A Italy", "2018-2019 Serie A Italy"].map do |string| 
-                    string 
+                serie_a_italy_seasons = Competition.find_by(name: "Serie A Italy").seasons.map.uniq do |t| 
+                    t.name 
                 end 
             puts serie_a_italy_seasons   
             elsif competition_choice == competition_menu[4] 
-                la_liga_seasons = ["2019-2020 La Liga", "2018-2019 La Liga"].map do |string| 
-                    string 
+                la_liga_seasons = Competition.find_by(name: "La Liga").seasons.map.uniq do |t| 
+                    t.name 
                 end 
             puts la_liga_seasons 
             elsif competition_choice == competition_menu[5] 
-                serie_a_brazil_seasons = [].map do |string| 
-                    string 
-                end 
+                serie_a_brazil_seasons = Competition.find_by(name: "Serie A Brazil").seasons.map do |t| 
+                    t.name 
+                end.uniq 
             puts serie_a_brazil_seasons 
             elsif competition_choice == competition_menu[6] 
-                bundesliga_seasons = [].map do |string| 
-                    string 
-                end 
-            puts bundesliga_seasons    
+                bundesliga_seasons = Competition.find_by(name: "Bundesliga").seasons.map do |t| 
+                    t.name 
+                end.uniq 
+            puts bundesliga_seasons   
             end 
             user_season_menu = ["Add a new season", "Update an existing season", "Exit"] 
             user_season_choice = nil  
@@ -114,7 +114,6 @@ while main_choice != main_menu[7]
                     end_date = prompt.ask("What is the ending date for the season? ") 
                     name = prompt.ask("What is the season's name? ") 
                     new_season = Season.create(start_date: start_date, end_date: end_date, name: name) 
-                    world_cup_seasons << new_season   
                 elsif user_season_choice == user_season_menu[1] 
                     name_prompt = prompt.ask("Which season would you like to update? ") 
                     old_name = name_prompt 
@@ -125,7 +124,7 @@ while main_choice != main_menu[7]
             end 
         end 
     elsif main_choice == main_menu[2] 
-        season_prompt = prompt.ask("Which season will the group be in?  ")   
+        season_prompt = prompt.ask("Please enter the competition you are interested in?  ")   
         season_menu = ["FIFA World Cup 2018", "FIFA World Cup 2014"].map do |string| 
             string 
         end 
@@ -135,11 +134,102 @@ while main_choice != main_menu[7]
             season_choice = prompt.select("Please select another option", season_menu)  
             if season_choice == season_menu[0] 
                 fifa_world_cup_2018 = Season.find_by(name: "FIFA World Cup 2018").matches.map do |t| 
-                    t.name 
-                end 
+                    t.group 
+                end.uniq  
+            elsif season_choice == season_menu[1] 
+                fifa_world_cup_2014 = Season.find_by(name: "FIFA World Cup 2014").matches.map do |t| 
+                    t.group 
+                end.uniq   
             end 
         end 
-    end 
+    elsif main_choice == main_menu[3] 
+        group_prompt = prompt.ask("Please enter the season you are interested in? ") 
+        group_menu = Season.find_by(group: group_prompt).matches.map do |t| 
+            t.group 
+        end 
+        group_menu << "Exit" 
+        group_choice = nil 
+        while group_choice != "Exit" 
+            group_choice = prompt.select("Please select another option", group_menu) 
+            if group_choice == group_menu[0] 
+                group_a_teams = Match.find_by(group: "Group A").teams.map do |t| 
+                    t.name 
+                end 
+                puts group_a_teams  
+            elsif group_choice == group_menu[1] 
+                group_b_teams = Match.find_by(group: "Group B").teams.map do |t| 
+                    t.name 
+                end 
+                puts group_b_teams
+            elsif group_choice == group_menu[2] 
+                group_c_teams = Match.find_by(group: "Group C").teams.map do |t| 
+                    t.name 
+                end 
+                puts group_c_teams
+            elsif group_choice == group_menu[3] 
+                group_d_teams = Match.find_by(group: "Group D").teams.map do |t| 
+                    t.name 
+                end 
+                puts group_d_teams 
+            elsif group_choice == group_menu[4] 
+                group_e_teams = Match.find_by(group: "Group E").teams.map do |t| 
+                    t.name 
+                end 
+                puts group_e_teams 
+            elsif group_choice == group_menu[5] 
+                group_f_teams = Match.find_by(group: "Group F").teams.map do |t| 
+                    t.name 
+                end 
+                puts group_f_teams
+            elsif  group_choice == group_menu[6] 
+                group_g_teams = Match.find_by(group: "Group G").teams.map do |t| 
+                    t.name 
+                end 
+                puts group_g_teams 
+            elsif group_choice == group_menu[7] 
+                group_h_teams = Match.find_by(group: "Group H").teams.map do |t| 
+                    t.name 
+                end 
+                puts group_h_teams 
+            elsif group_choice == group_menu[8] 
+                round_of_16_teams = Match.find_by(group: "Round of 16").teams.map do |t| 
+                    t.name 
+                end 
+                puts round_of_16_teams 
+            elsif group_choice == group_menu[9] 
+                quarter_finals_teams = Match.find_by(group: "Quarter-Finals").teams.map do |t| 
+                    t.name 
+                end 
+                puts quarter_finals_teams
+            elsif group_choice == group_menu[10] 
+                semi_finals_teams = Match.find_by(group: "Semi-Finals").teams.map do |t| 
+                    t.name 
+                end 
+                puts semi_finals_teams 
+            elsif group_choice == group_menu[11] 
+                third_place_playoff_teams = Match.find_by(group: "3rd Place Playoff").teams.map do |t| 
+                    t.name 
+                end 
+                puts third_place_playoff_teams 
+            elsif group_choice == group_menu[12] 
+                finals_teams = Match.find_by(group: "Final").teams.map do |t| 
+                    t.name 
+                end 
+                puts finals_teams 
+            end 
+            user_team_options = ["Add a new team", "Update an existing team", "Remove an existing team", "Exit"] 
+            user_team_choice = nil 
+            while user_team_choice != "Exit" 
+                user_team_choice = prompt.select("Please select another option: ", user_team_menu) 
+                if user_team_choice == user_team_options[0] 
+                    name = prompt.ask("What would you like to name your team? ") 
+                    short_name = prompt.ask("What will be the short name for the team? ") 
+                    last_updated = Datetime.now 
+                    venue = prompt.ask("What will be the main venue for the team? ") 
+                    new_team = Team.create(name: name, short_name: short_name, last_updated: last_updated, venue: venue) 
+                end  
+            end  
+        end 
 end 
 # cli = CommandLineInterface.new 
 # cli.run  
