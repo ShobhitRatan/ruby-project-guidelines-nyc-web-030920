@@ -71,13 +71,13 @@ while main_choice != main_menu[7]
         while competition_choice != competition_menu[7]   
             competition_choice = prompt.select("Please select another option", competition_menu)  
             if competition_choice == competition_menu[0] 
-                world_cup_seasons = Competition.find_by(name: "World Cup").seasons.map.uniq do |t| 
+                world_cup_seasons = Competition.find_by(name: "World Cup").seasons.map do |t| 
                     t.name 
-                end 
+                end.uniq 
                 puts world_cup_seasons 
             elsif competition_choice == competition_menu[1] 
-                premier_league_seasons = Competition.find_by(name: "Premier League").seasons.map.uniq do |t| 
-                    t.name 
+                premier_league_seasons = ["FIFA World Cup 2018", "FIFA World Cup 2014"].map do |string| 
+                    string 
                 end 
             puts premier_league_seasons 
             elsif competition_choice == competition_menu[2] 
