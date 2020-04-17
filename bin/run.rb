@@ -99,7 +99,7 @@ while main_choice != main_menu[7]
                     t.name 
                 end 
             puts serie_a_brazil_seasons 
-            elsif competition_choice == competition_menu[1] 
+            elsif competition_choice == competition_menu[6] 
                 bundesliga_seasons = Competition.find_by(name: "Bundesliga").seasons.map do |t| 
                     t.name 
                 end 
