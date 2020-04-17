@@ -241,7 +241,7 @@ while main_choice != main_menu[7]
             end  
         end
     elsif main_choice == main_menu[4] 
-        team_prompt = "Please enter a group to see the teams: " 
+        team_prompt = prompt.ask("Please enter a group to see the teams: ")  
         team_menu = Match.find_by(group: team_prompt).teams.map do |t| 
             t.name 
         end 
@@ -250,9 +250,25 @@ while main_choice != main_menu[7]
         while team_choice != team_menu[4] 
             team_choice = prompt.select("Please select another option", team_menu) 
             if team_choice == team_menu[0] 
-                team_1_lineup = Team.find_by(name: Iran).players.map do |t| 
+                team_1_lineup = Team.find_by(name: "Morocco").players.map do |t| 
                     t.name 
                 end 
+                puts team_1_lineup 
+            elsif team_choice == team_menu[1] 
+                team_2_lineup = Team.find_by(name: "Iran").players.map do |t| 
+                    t.name 
+                end 
+                puts team_2_lineup
+            elsif team_choice == team_menu[2] 
+                team_3_lineup = Team.find_by(name: "Portugal").players.map do |t| 
+                    t.name 
+                end 
+                puts team_3_lineup 
+            elsif team_choice == team_menu[3] 
+                team_4_lineup = Team.find_by(name: "Spain").players.map do |t| 
+                    t.name 
+                end 
+                puts team_4_lineup 
             end 
         end 
     end 
